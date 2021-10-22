@@ -1,0 +1,456 @@
+// htmlタグ
+body
+{
+	font-family: "Helvetica Neue", "Arial", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", "sans-serif";
+}
+
+ul
+{
+	list-style: none;
+}
+
+p
+{
+	letter-spacing: 0.1rem;
+}
+// ヘッダー
+header
+{
+	position: relative;
+
+	width: 	100%;
+	height: 100vh;
+
+	display:         flex;
+	align-items:     center;
+	justify-content: center;
+	
+	background: url('../img/mainvisual.jpg') center;
+
+	#header-h1
+	{
+		width:       40%;
+		filter:      drop-shadow(1px 1px 2px #999);
+
+		img
+		{
+			width: 100%;
+		}
+	}
+
+	#header-menu
+	{
+		position: absolute;
+
+		display:         flex;
+		align-items:     center;
+		justify-content: center;
+
+		right: 40px;
+		top:   20px;
+
+		a
+		{
+			margin-right: 20px;
+			
+			color:       #fff;
+			font-size:   1.2rem;
+			font-weight: 600;
+
+			text-shadow: 1px 1px 2px #999;
+
+			transition: all 0.6s;
+
+			cursor: pointer;
+			&:last-of-type
+			{
+				margin-right: 0;
+			}
+			&:hover
+			{
+				color: #f33;
+			}
+		}
+	}
+}
+
+// メイン
+main
+{
+	// メイン内共通クラス
+	.main-content-wrap
+	{
+		max-width: 1000px;
+		padding:   100px 16px 150px;
+		margin:    0 auto;
+	}
+
+	.main-h2-wrap
+	{
+		height: 250px;
+		width:  100%;
+
+		display:         flex;
+		align-items:     center;
+		justify-content: center;
+
+		background-size:       cover;
+		background-attachment: fixed;
+		background-position:   center;
+
+		.main-h2
+		{
+			color:       #fff;
+			font-size:   4rem;
+			font-weight: 600;
+		}
+	}
+
+
+	.main-h3
+	{
+		display:     inline-block;
+		font-size:   2.3rem;
+		font-weight: 600;
+
+		border-bottom:solid #f33 5px;
+
+		padding-bottom: 10px;
+		margin-bottom:  70px;
+	}
+
+	// 各コンテンツ
+	// MENU(競合が起きそうなのでid,クラス名はfoods)
+	#white-line
+	{
+		height: 20px;
+	}
+	#main-foods-section
+	{
+		.main-foods-h2-wrap
+		{
+			background-image: url(../img/menu.jpg);
+			// background-size等はメイン内共通クラスで指定
+		}
+
+		#main-foods-content-wrap
+		{
+			display: flex;
+			width:   100%;
+
+			#main-foods-content-left,
+			#main-foods-content-right
+			{
+				width: 50%;
+				
+				display:         flex;
+				flex-direction:  column;
+				align-items:     center;
+				justify-content: space-between;
+
+				.main-foods-ul
+				{
+					width: 100%;
+
+					li
+					{
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						margin-bottom: 20px;
+
+						.main-foods-name
+						{
+							padding: 1% 0;
+
+							width: 80%;
+							border-bottom: 2px #ddd solid;
+						}
+
+						.main-foods-price
+						{
+							display: inline-block;
+						}
+					}
+				}
+			}
+			#main-foods-content-right
+			{
+				#main-foods-right-top,
+				#main-foods-right-bottom
+				{
+					width: 100%;
+					
+					display:        flex;
+					flex-direction: column;
+					align-items:    center;
+				}
+			}
+		}
+	}
+
+	// ABOUT
+	#main-about-section
+	{
+		.main-h2-wrap
+		{
+			background-image: url(../img/about.jpg);
+			// background-size等はメイン内共通クラスで指定
+		}
+
+		#main-about-content-wrap
+		{
+			display:        flex;
+			flex-direction: column;
+			align-items:    center;
+
+			#main-about-text
+			{
+				display:         flex;
+				justify-content: space-between;
+				margin-bottom:   50px;
+
+				#main-about-text-left,
+				#main-about-text-right
+				{
+					width: 48%;
+					
+					display:         flex;
+					flex-direction:  column;
+					justify-content: space-between;
+
+					p
+					{
+						margin-bottom: 50px;
+						font-size:     1.3rem;
+
+						&:last-of-type
+						{
+							margin-bottom: 0;
+						}
+					}
+				}
+			}
+
+			#main-about-button
+			{
+				position: relative;
+				padding:  20px 30px;
+
+				border: solid 1px transparent; // hover時のガタつきを防ぐために指定
+				
+				
+				&:hover
+				{
+					
+					&::before
+					{
+						width:  100%;
+						height: 100%;
+					}
+					&::after
+					{
+						width:  100%;
+						height: 100%;
+					}
+				}
+				
+				&::before
+				{
+					position: absolute;
+					content:  "";
+					
+					width:  35%;
+					height: 50%;
+					
+					left: 0;
+					top:  0;
+					
+					border-top:  solid 2px #fa9;
+					border-left: solid 2px #fa9;
+
+					transition: all 0.6s;
+				}
+				
+				&::after
+				{
+					position: absolute;
+					content:  "";
+					
+					width:  35%;
+					height: 50%;
+					
+					right:  0;
+					bottom: 0;
+					
+					border-bottom: solid 2px #fa9;
+					border-right:  solid 2px #fa9;
+					
+					transition: all 0.6s;
+				}
+			}
+		}
+	}
+
+	#main-location-section
+	{
+		.main-h2-wrap
+		{
+			background-image: url(../img/location.jpg);
+			// background-size等はメイン内共通クラスで指定
+		}
+
+		#main-location-content-wrap
+		{
+			display:        flex;
+			flex-direction: column;
+			align-items:    center;
+
+			#main-gmap
+			{
+				width:         100%;
+				margin-bottom: 30px;
+
+				iframe
+				{
+					width: 100%;
+
+					filter: grayscale(100%);
+				}
+			}
+
+			#main-location-data
+			{
+				width: 100%;
+
+				p
+				{
+					font-size:     1.1rem;
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+}
+
+// フッター
+footer
+{
+	text-align: center;
+	padding:    7px 0;
+}
+
+@media only screen and (max-width:599px){
+	p
+	{
+		font-size: 0.7rem;
+	}
+	header
+	{
+		#header-h1
+		{
+			width: 90%;
+		}
+		#header-menu
+		{
+			right: 20px;
+			li
+			{
+				font-size: 0.9rem;
+			}
+		}
+	}
+
+	main
+	{
+		.main-content-wrap
+		{
+			padding: 30px 16px 100px;
+		}
+		.main-h2-wrap
+		{
+			height:                120px;
+			background-attachment: 1;
+			.main-h2
+			{
+				font-size: 3rem;
+			}
+		}
+		.main-h3
+		{
+			font-size:     1.5rem;
+			margin-bottom: 25px;
+		}
+
+		#main-foods-section
+		{
+			#main-foods-content-wrap
+			{
+				flex-direction: column;
+				
+				#main-foods-content-left,
+				#main-foods-content-right
+				{
+					width: 100%;
+
+					.main-foods-ul
+					{
+						margin-bottom: 30px;
+					}
+				}
+			}
+		}
+		#main-about-section
+		{
+			#main-about-content-wrap
+			{
+				#main-about-text
+				{
+					flex-direction: column;
+					
+					#main-about-text-left,
+					#main-about-text-right
+					{
+						width: 100%;
+
+						p
+						{
+							margin-bottom: 10px;
+							font-size:     1rem;
+							&:last-of-type
+							{
+								margin-bottom: 10px;
+							}
+						}
+					}
+					#main-about-text-right
+					{
+						p
+						{
+							&:last-of-type
+							{
+								margin-bottom: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#main-location-section
+		{
+			#main-location-content-wrap
+			{
+				#main-location-data
+				{
+					p
+					{
+						font-size:      0.7rem;
+						letter-spacing: 0;
+					}
+				}
+			}
+		}
+	}
+}

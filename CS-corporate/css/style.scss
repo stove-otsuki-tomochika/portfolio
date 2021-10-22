@@ -1,0 +1,782 @@
+html
+{
+	font-family: 'Noto Sans JP', sans-serif;
+}
+h2
+{
+	position: relative;
+	
+	font-size: 28px;
+	font-weight: 600;
+	
+	text-align: center;
+	margin-bottom: 60px;
+
+	&:before
+	{
+		position: absolute;
+		content: "";
+
+		width: 25%;
+		height: 1px;
+
+		background: #ddd;
+
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	&:after
+	{
+		position: absolute;
+		content: "";
+
+		width: 25%;
+		height: 1px;
+
+		background: #ddd;
+
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+// ページ内共通クラス
+.contents-wrap
+{
+	max-width: 900px;
+	padding: 0 20px;
+	margin: 0 auto;
+}
+#scroll-top-button
+{
+	position: fixed;
+	content: "";
+	
+	bottom: 25px;
+	right: 25px;
+
+	width: 50px;
+	height: 50px;
+
+	border-radius: 50%;
+
+	border: solid 1px #fff;
+
+	background: #000;
+
+	z-index: 10;
+	cursor: pointer;
+
+	&:after
+	{
+		position: absolute;
+		content: "";
+
+		width: 0;
+		height: 0;
+
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%,-50%);
+
+		border-bottom: solid #fff 7px;
+		border-right: solid transparent 7px;
+		border-left: solid transparent 7px;
+
+	}
+}
+.buttonHide
+{
+	animation: scrollTopButtonHide 0.3s forwards;
+	pointer-events: none;
+}
+.buttonShow
+{
+	animation: scrollTopButtonShow 0.3s forwards;
+}
+@keyframes scrollTopButtonHide {
+	0% {opacity: 1;}
+	100% { opacity: 0;}
+}
+@keyframes scrollTopButtonShow {
+	0% {opacity: 0;}
+	100% { opacity: 1;}
+}
+// コンテンツごとのスタイル
+body
+{
+	display: flex;
+
+	#body-left
+	{
+		width: 300px;
+		height: 100vh;
+		position: fixed;
+
+		header
+		{
+			padding: 0 40px;
+			background: #fff;
+			#side-menu-h1
+			{
+				width: 200px;
+				height: 60px;
+				margin: 40px 0 0;
+				
+				img
+				{
+					width: 100%;
+					height: 100&;
+				}
+			}
+			#sp-hamburger
+			{
+				display: none;
+			}
+		}
+
+		#side-menu
+		{
+			padding-top: 40px;
+			background: #fff;
+			.side-menu-ul
+			{
+				&:first-of-type
+				{
+					margin-bottom: 76px;
+				}
+				li
+				{
+					margin-bottom: 16px;
+					&:last-of-type
+					{
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+
+	#page-contents
+	{
+		width: calc(100% - 300px); // -300px の部分は#side-menuのwidthと同じにする
+		margin-left: 300px; // #side-menuのwidthと同じ
+
+		#main-video
+		{
+			position: fixed;
+			width: calc(100% - 300px);
+			z-index: -1;
+			height: 100vh;
+			object-fit: cover;
+		}
+
+		#intro-section
+		{
+			padding: 680px 0 160px; //topはheader-videoの高さ+80px
+
+			background-image: linear-gradient(180deg,transparent,rgba(0,0,0,0.8));
+			h2
+			{
+				color: #fff;
+			}
+
+			.project-images
+			{
+				display: grid;
+				grid-template-columns: repeat(2,1fr);
+				gap: 55px;
+
+				margin-bottom: 160px;
+
+				.project-image-link
+				{
+					position: relative;
+					border: 1px solid #fff;
+					img
+					{
+						width: 100%;
+					}
+					p
+					{
+						position: absolute;
+
+						width: 100%;
+						height: 30px;
+						padding: 2px;
+
+						bottom: 0;
+						left: 0;
+
+						display: flex;
+						align-items: flex-end;
+
+						color: #fff;
+						font-size: 12px;
+
+						box-shadow: inset 0 -30px 10px -10px #222;
+
+						padding-left: 5px;
+						padding-bottom: 5px;
+					}
+				}
+			}
+
+			#construction-houses-wrap
+			{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.construction-house
+			{
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				
+				width: 30%;
+
+				color: #fff; //文字の色を白で統一
+				.construction-house-link
+				{
+					position: relative;
+					width: 100%;
+					padding-top: 100%;
+
+					border: solid #fff 1px;
+					border-radius: 50%;
+
+					margin-bottom: 15px;
+
+					overflow: hidden;
+
+					p
+					{
+						position: absolute;
+						
+						top: 50%;
+						left: 50%;
+
+						transform: translate(-50%,-50%);
+
+						font-size: 14px;
+					}
+
+					&:before
+					{
+						position: absolute;
+						content: "";
+
+						width: 100%;
+						height: 100%;
+
+						top: 0;
+						left: -100%;
+
+						background: #fff;
+						opacity: 0.3;
+
+						transition: all 0.6s;
+					}
+
+					&:hover
+					{
+						&::before
+						{
+							left: 0;
+						}
+					}
+				}
+				.construction-house-h3
+				{
+					font-size: 16px;
+					font-weight: 600;
+
+					margin-bottom: 5px;
+				}
+
+				.construction-house-text
+				{
+					font-size: 14px;
+				}
+			}
+		}
+		#flow-section
+		{
+			padding: 120px 0 160px;
+			background: #fff;
+
+			#flow-intro
+			{
+				font-size: 16px;
+				margin-bottom: 60px;
+			}
+
+			#flows-wrap
+			{
+				display: flex;
+				justify-content: space-between;
+				gap: 80px;
+
+				.flow-right,
+				.flow-left
+				{
+					display: flex;
+					flex-direction: column;
+	
+					gap: 40px;
+
+					.flow-name,
+					.flow-text
+					{
+						height: 80px;
+					}
+				}
+
+				.flow-left
+				{
+					.flow-name
+					{
+						position: relative;
+
+						display: flex;
+						align-items: center;
+						justify-content: center;
+
+						width: 16vw;
+
+						background: #414141;
+
+						color: #fff;
+
+						&:before //三角形
+						{
+							position: absolute;
+							content: "";
+
+							width: 0;
+							height: 0;
+
+							top: 100%;
+							left: 0;
+
+							border-top: 20px solid #414141;
+							border-left: solid transparent 8vw;
+							border-right: solid transparent 8vw;
+
+							z-index: 1;
+						}
+
+						&:after //次のflow-nameと繋ぐ線
+						{
+							position: absolute;
+							content: "";
+
+							width: 25%;
+							height: 100%;
+
+							top: 100%;
+							left: 50%;
+
+							transform: translateX(-50%);
+
+							background: #FFDD00;
+						}
+						
+						&:last-of-type
+						{
+							&::after
+							{
+								display: none;
+							}
+						}
+						
+					}
+				}
+					
+				.flow-right
+				{
+					.flow-text
+					{
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+
+						width: 100%;
+
+						.flow-text-title
+						{
+							position: relative;
+
+							width: 100%;
+							height: 32px;
+
+							font-size: 20px;
+							border-bottom: solid #121212 1px;
+
+							padding-bottom: 8px;
+							margin-bottom: 10px;
+
+							.flow-number
+							{
+								position: absolute;
+
+								width: 30px;
+								height: 30px;
+								border-radius: 50%;
+								background: #414141;
+
+								top: 50%;
+								right:calc(100% + 10px);
+
+								transform: translateY(-50%);
+	
+								display: flex;
+								align-items: center;
+								justify-content: center;
+	
+								color: #fff;
+								font-size: 16px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#contact-section
+		{
+			background: #fff;
+			padding-bottom: 160px;
+
+			#contact-intro
+			{
+				font-size: 16px;
+				margin-bottom: 60px;
+			}
+
+			#contact-links-wrap
+			{
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				.contact-link-box
+				{
+					position: relative;
+
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+
+					width: 30%;
+					height: 190px;
+
+					border: solid #000 1px;
+
+					img
+					{
+						margin-bottom: 5px;
+					}
+
+					&:after
+					{
+						position: absolute;
+						content: "";
+
+						width: 0;
+						height: 0;
+
+						bottom: 2px;
+						right: -18px;
+						
+						transform: rotate(-45deg);
+
+						transform-origin: center bottom;
+
+						border-top: 20px solid #000;
+						border-left: solid transparent 20px;
+						border-right: solid transparent 20px;
+
+						z-index: 1;
+					}
+
+					&:hover
+					{
+						border: solid #000 3px;
+					}
+				}
+			}
+		}
+	}
+	footer
+	{
+		background: #121212;
+		color: #fff;
+
+		height: 170px;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+
+		padding: 50px 0 20px;
+		#footer-links
+		{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+
+			a
+			{
+				padding: 0 20px;
+
+				border-right: solid #fff 1px;
+				margin-bottom: 10px;
+
+				&:last-of-type
+				{
+					border-right: 0;
+				}
+			}
+		}
+		small
+		{
+			text-align: center;
+			font-size: 12px;
+		}
+	}
+}
+
+@media screen and (max-width: 960px) {
+	h2
+	{
+		margin-bottom: 30px;
+	}
+	body
+	{
+		#body-left
+		{
+			width: 0;
+			height: 0;
+
+			z-index: 20; // headerを最前面に移動
+			
+			header
+			{
+				position: fixed;
+				width: 100%;
+				height: 72px;
+
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				padding: 10px 18px;
+				#side-menu-h1
+				{
+					width: 180px;
+					margin: 0;
+
+					img
+					{
+						height: 100%;
+					}
+				}
+				.hamburger-open
+				{
+					.hamburger-border
+					{
+						&:nth-child(1)
+						{
+							top: 50% !important;
+							transform: rotate(495deg) !important;
+						}
+						&:nth-child(3)
+						{
+							top: 50% !important;
+							transform: rotate(-495deg) !important;
+						}
+						&:nth-child(2)
+						{
+							opacity: 0 !important;
+						}
+					}
+				}
+				#sp-hamburger
+				{
+					position: relative;
+					display: block;
+					width: 30px;
+					height: 20px;
+
+					cursor: pointer;
+
+					z-index: 30;
+
+					.hamburger-border
+					{
+						position: absolute;
+
+						width: 100%;
+						height: 2px;
+
+						background: #121212;
+
+						left: 0;
+						transition: all 0.6s;
+						&:nth-child(1)
+						{
+							top: 0;
+						}
+						&:nth-child(2)
+						{
+							opacity: 1;
+
+							top: 50%;
+							transform: translateY(-50%);
+						}
+						&:nth-child(3)
+						{
+							top: calc( 100% - 2px );
+						}
+					}
+				}
+				#side-menu
+				{
+					position: fixed;
+					
+					width: 300px;
+					height: 100vh;
+	
+					top: 0;
+					left: -300px;
+	
+					z-index: 20;
+	
+					transition: all 0.6s;
+				}
+				#res-modal
+				{
+					position: fixed;
+	
+					top: 0;
+					left: 0;
+	
+					width: 100%;
+					height: 100%;
+	
+					background: #000;
+					opacity: 0.3;
+	
+					z-index: 10;
+				}
+			}
+
+		}
+		#page-contents
+		{
+			width: 100%;
+			margin-left: 0;
+
+			#main-video
+			{
+				width: 100%;
+			}
+
+			#intro-section
+			{
+				padding: 680px 0 120px;
+				.project-images
+				{
+					grid-template-columns: repeat(1,1fr);
+					gap: 30px;
+
+					margin-bottom: 120px;
+				}
+			}
+			#flow-section
+			{
+				padding: 60px 0 120px;
+
+				#flow-intro
+				{
+					margin-bottom: 30px;
+				}
+				#flows-wrap
+				{
+					flex-direction: column;
+					gap: 120px;
+
+					.flow-right,
+					.flow-left
+					{
+						gap: 60px;
+					}
+
+					.flow-left
+					{
+						align-items: center;
+						.flow-name
+						{
+							width: 80vw;
+
+							&:before //三角形
+							{
+								border-top: 
+								40px solid #414141;
+								border-left: solid transparent 40vw;
+								border-right: solid transparent 40vw;
+							}
+
+							&:after
+							{
+								width: 15%;
+							}
+						}
+					}
+
+					.flow-right
+					{
+						align-items: flex-end;
+						.flow-text
+						{
+							width: 87%;
+						}
+					}
+				}
+			}
+			#contact-section
+			{
+				padding-bottom: 120px;
+
+				#contact-intro
+				{
+					margin-bottom: 30px;
+				}
+
+				#contact-links-wrap
+				{
+					flex-direction: column;
+					gap: 20px;
+
+					.contact-link-box
+					{
+						width: 80%;
+					}
+				}
+			}
+			footer
+			{
+				height: 210px;
+			}
+		}
+	}
+}
